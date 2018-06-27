@@ -131,7 +131,7 @@ class iMap(tk.Frame):
                     writer.writerows(data)
 
                 messagebox.showinfo(title="Success!", message="Your images have been geocoded and exported! "
-                                        + "Please check your export folder to view your new images and csv file.") 
+                                        + "Please check your export folder to view your new images and CSV file.") 
             else:
                 messagebox.showerror(title="Path Error", message="One or both of your folder paths are incorrect. "
                                         + "Please ensure that the folder paths you entered exist on your computer "

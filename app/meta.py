@@ -78,26 +78,11 @@ counter = 1
 # and date created.
 def create_new_name(address, date):
     global counter
-    if (address and date):
-        comma_index = address.index(',')
-        space_index = date.index(' ')
-        prefix = address[0:comma_index].replace(' ','')
-        root = date[0:space_index].replace(':', '-')
-        suffix = str(counter)
-    elif (address != None):
-        comma_index = address.index(',')
-        prefix = address[0:comma_index]
-        root = 'NA'
-        suffix = str(counter)
-    elif (date != 'None'):
-        space_index = date.index(' ')
-        prefix = 'NA'
-        root = date[0:space_index].replace(':', '-')
-        suffix = str(counter)
-    else:
-        prefix = 'NA'
-        root = 'NA'
-        suffix = str(counter)
+    comma_index = address.index(',')
+    space_index = date.index(' ')
+    prefix = address[0:comma_index].replace(' ','')
+    root = date[0:space_index].replace(':', '-')
+    suffix = str(counter)
     new_name = prefix + '_' + root + '_' + suffix + '.jpg'
     counter += 1
     return new_name

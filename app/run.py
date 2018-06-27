@@ -1,3 +1,7 @@
+
+# run.py
+# Start file for the iMap app.
+
 import tkinter as tk
 from imap import iMap
 
