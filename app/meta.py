@@ -1,11 +1,14 @@
 
+# meta.py
+# File that contains all the functions necessary
+# to extract meta data from the images.
+
 import requests
 import exifread as ef
 
-counter = 1
-
 # barrowed from 
 # https://gist.github.com/snakeye/fdc372dbf11370fe29eb 
+# Converts meta tag format to a readable latitude and longitude.
 def _convert_to_degress(value):
     d = float(value.values[0].num) / float(value.values[0].den)
     m = float(value.values[1].num) / float(value.values[1].den)
@@ -13,6 +16,7 @@ def _convert_to_degress(value):
 
     return d + (m / 60.0) + (s / 3600.0)
 
+# Extracts GPS information from and image.
 def get_gps(filepath):
     with open(filepath, 'rb') as f:
         tags = ef.process_file(f)
@@ -35,6 +39,9 @@ def get_gps(filepath):
         return lat_value, lon_value
     return None, None
 
+# Reverse geocodes latitude and longitude
+# and returns an address using the Google
+# API.
 def reverse_geocode(lat, lon):
     GOOGLE_MAPS_API_URL = 'https://maps.googleapis.com/maps/api/geocode/json'
     
@@ -64,6 +71,11 @@ def get_date(filepath):
         else:
             return None
 
+# Counter for new file naming scheme.
+counter = 1
+
+# Generates new file name based on address
+# and date created.
 def create_new_name(address, date):
     global counter
     if (address and date):

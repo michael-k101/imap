@@ -1,4 +1,8 @@
 
+# model.py
+# Class file that allows image information
+# to be stored and manipulated within objects.
+
 class Image():
     def __init__(self):
         self.date_created = None
